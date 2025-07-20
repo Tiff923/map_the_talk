@@ -1,0 +1,238 @@
+{
+  "shared_themes": [
+    {
+      "id": "ef158fb1-2916-4338-953f-330ab2eae557",
+      "name": "AI Agents and Their Functionality",
+      "participating_video_ids": [
+        "eHEHE2fpnWQ"
+      ],
+      "consensus_level": 0.5
+    },
+    {
+      "id": "fc863442-3c45-4006-b32e-dad04921df11",
+      "name": "Types of AI Agents",
+      "participating_video_ids": [
+        "eHEHE2fpnWQ"
+      ],
+      "consensus_level": 0.5
+    },
+    {
+      "id": "df5c8796-8a90-4d1c-9f8e-8a2eb4331f1c",
+      "name": "Architectural Approaches to AI Agents",
+      "participating_video_ids": [
+        "eHEHE2fpnWQ"
+      ],
+      "consensus_level": 0.5
+    },
+    {
+      "id": "76955334-5a1d-4894-a4f3-406d9b334c50",
+      "name": "Integration with Existing Systems",
+      "participating_video_ids": [
+        "eHEHE2fpnWQ"
+      ],
+      "consensus_level": 0.5
+    },
+    {
+      "id": "a8238d32-7019-407b-aeba-ab3f0b91584b",
+      "name": "Human-Machine Collaboration",
+      "participating_video_ids": [
+        "eHEHE2fpnWQ"
+      ],
+      "consensus_level": 0.5
+    },
+    {
+      "id": "c47fd238-b15d-417a-8013-1aa5f3b94163",
+      "name": "Agentic AI vs Autonomous AI",
+      "participating_video_ids": [
+        "Jj1-zb38Yfw"
+      ],
+      "consensus_level": 0.5
+    },
+    {
+      "id": "a1815851-265c-4a93-9db7-bb5cbc5b9965",
+      "name": "Building AI Agents",
+      "participating_video_ids": [
+        "Jj1-zb38Yfw"
+      ],
+      "consensus_level": 0.5
+    },
+    {
+      "id": "12f89657-9c59-454c-b31d-00922a235d9f",
+      "name": "Real-World Applications and Capabilities",
+      "participating_video_ids": [
+        "Jj1-zb38Yfw"
+      ],
+      "consensus_level": 0.5
+    },
+    {
+      "id": "c156370e-1ce4-413a-a945-2951da60bd79",
+      "name": "Data Feedback Loops",
+      "participating_video_ids": [
+        "Jj1-zb38Yfw"
+      ],
+      "consensus_level": 0.5
+    },
+    {
+      "id": "72a0ea0f-425a-4875-ac13-6ac1380a90e6",
+      "name": "Model Context Protocol (MCP)",
+      "participating_video_ids": [
+        "Jj1-zb38Yfw"
+      ],
+      "consensus_level": 0.5
+    }
+  ],
+  "contrasts": [],
+  "concept_overlaps": [
+    {
+      "id": "1",
+      "primary_concept": "Integration with Existing Systems",
+      "primary_type": "theme",
+      "overlapping_concepts": [
+        "Integration with Existing Systems",
+        "Integration of AI Agents with Existing Systems",
+        "Integration with Existing Systems"
+      ],
+      "overlapping_types": [
+        "subtopic",
+        "subtopic",
+        "subtopic"
+      ],
+      "should_merge": true,
+      "semantic_similarity": 0.9
+    },
+    {
+      "id": "2",
+      "primary_concept": "Types of AI Agents",
+      "primary_type": "theme",
+      "overlapping_concepts": [
+        "Types of AI Agents",
+        "Types of AI Agents"
+      ],
+      "overlapping_types": [
+        "subtopic",
+        "subtopic"
+      ],
+      "should_merge": true,
+      "semantic_similarity": 0.95
+    },
+    {
+      "id": "3",
+      "primary_concept": "Memory and Contextual Awareness",
+      "primary_type": "subtopic",
+      "overlapping_concepts": [
+        "Memory and Contextual Awareness in Agents",
+        "Memory and Contextual Awareness"
+      ],
+      "overlapping_types": [
+        "subtopic",
+        "subtopic"
+      ],
+      "should_merge": true,
+      "semantic_similarity": 0.85
+    },
+    {
+      "id": "4",
+      "primary_concept": "Autonomy Spectrum in AI Agents",
+      "primary_type": "subtopic",
+      "overlapping_concepts": [
+        "Autonomy Levels in AI Agents",
+        "Autonomy Calibration in AI Agents"
+      ],
+      "overlapping_types": [
+        "subtopic",
+        "subtopic"
+      ],
+      "should_merge": true,
+      "semantic_similarity": 0.8
+    },
+    {
+      "id": "5",
+      "primary_concept": "Human-Machine Collaboration",
+      "primary_type": "theme",
+      "overlapping_concepts": [
+        "Human-Machine Collaboration Models"
+      ],
+      "overlapping_types": [
+        "subtopic"
+      ],
+      "should_merge": false,
+      "semantic_similarity": 0.7
+    },
+    {
+      "id": "6",
+      "primary_concept": "Model Context Protocol (MCP)",
+      "primary_type": "theme",
+      "overlapping_concepts": [
+        "Model Context Protocol (MCP)"
+      ],
+      "overlapping_types": [
+        "subtopic"
+      ],
+      "should_merge": true,
+      "semantic_similarity": 0.9
+    },
+    {
+      "id": "7",
+      "primary_concept": "Orchestration Frameworks for AI Agents",
+      "primary_type": "subtopic",
+      "overlapping_concepts": [
+        "Orchestration Frameworks for AI Agents",
+        "Orchestration Frameworks for AI Agents"
+      ],
+      "overlapping_types": [
+        "subtopic",
+        "subtopic"
+      ],
+      "should_merge": true,
+      "semantic_similarity": 1
+    },
+    {
+      "id": "8",
+      "primary_concept": "Agentic AI vs Autonomous AI",
+      "primary_type": "theme",
+      "overlapping_concepts": [
+        "Agent Workflow Orchestration"
+      ],
+      "overlapping_types": [
+        "subtopic"
+      ],
+      "should_merge": false,
+      "semantic_similarity": 0.65
+    },
+    {
+      "id": "9",
+      "primary_concept": "Feedback Loops in Agentic Learning",
+      "primary_type": "subtopic",
+      "overlapping_concepts": [
+        "Data Feedback Loops",
+        "Data Feedback Loop for Learning"
+      ],
+      "overlapping_types": [
+        "theme",
+        "subtopic"
+      ],
+      "should_merge": false,
+      "semantic_similarity": 0.75
+    },
+    {
+      "id": "10",
+      "primary_concept": "Collaboration and Orchestration in Agentic Systems",
+      "primary_type": "subtopic",
+      "overlapping_concepts": [
+        "Collaborative Architecture Designs"
+      ],
+      "overlapping_types": [
+        "subtopic"
+      ],
+      "should_merge": false,
+      "semantic_similarity": 0.6
+    }
+  ],
+  "analysis_metadata": {
+    "video_ids": [
+      "eHEHE2fpnWQ",
+      "Jj1-zb38Yfw"
+    ],
+    "generated_at": "2025-07-20T17:13:44.665871"
+  }
+}

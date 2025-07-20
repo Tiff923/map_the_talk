@@ -1,0 +1,2 @@
+class TranscriptNotFoundException(Exception):
+    pass 
