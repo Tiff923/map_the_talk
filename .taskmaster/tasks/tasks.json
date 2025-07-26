@@ -1,0 +1,257 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Setup Project Repository and Infrastructure",
+        "description": "Initialize the project repository with frontend (React) and backend (Python/FastAPI) components, configure development environment, and set up necessary infrastructure.",
+        "status": "pending",
+        "dependencies": [],
+        "priority": "high",
+        "details": "1. Create a GitHub repository with appropriate .gitignore and README\n2. Set up frontend project with React and install React Flow for mind map visualization\n3. Set up backend project with Python (FastAPI)\n4. Configure development environment with necessary dependencies\n5. Initialize database (Sqlite or MongoDB) schema based on the data models specified in the PRD\n6. Set up environment variables and configuration files\n7. Create documentation structure",
+        "testStrategy": "Verify all components can be built and run locally. Test database connections and basic API endpoints. Ensure the application can be properly initialized and run in a development environment.",
+        "subtasks": [
+          {
+            "id": 1,
+            "title": "Create GitHub repository",
+            "description": "Initialize a new GitHub repository with appropriate .gitignore for Python and React, and a comprehensive README file.",
+            "status": "in-progress",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 2,
+            "title": "Setup React frontend",
+            "description": "Create React application and install React Flow library for mind map visualization.",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 3,
+            "title": "Setup FastAPI backend",
+            "description": "Initialize Python project with FastAPI framework and set up basic project structure.",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 4,
+            "title": "Configure development environment",
+            "description": "Set up virtual environment for Python and install necessary dependencies for both frontend and backend.",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 5,
+            "title": "Initialize database schema",
+            "description": "Set up either Sqlite or MongoDB database and create initial schema based on PRD specifications.",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 6,
+            "title": "Configure environment variables",
+            "description": "Create configuration files and set up environment variables for development.",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 7,
+            "title": "Create documentation structure",
+            "description": "Set up documentation folders and initial files for API documentation, user guides, and development guidelines.",
+            "status": "pending",
+            "dependencies": [],
+            "details": "",
+            "testStrategy": ""
+          },
+          {
+            "id": 8,
+            "title": "Create GitHub Repository with Initial Structure",
+            "description": "Initialize the project repository on GitHub with appropriate structure, documentation, and configuration files.",
+            "dependencies": [],
+            "details": "1. Create a new GitHub repository with an appropriate name\n2. Initialize with a README.md containing project overview, goals, and setup instructions\n3. Add .gitignore file with patterns for React, Python, and database files\n4. Create a LICENSE file (MIT or appropriate license)\n5. Set up project directory structure with frontend/ and backend/ folders\n6. Add CONTRIBUTING.md with guidelines for contributors\n7. Configure GitHub repository settings (branch protection, etc.)",
+            "status": "pending",
+            "testStrategy": "Verify repository accessibility and correct structure by cloning it locally"
+          },
+          {
+            "id": 9,
+            "title": "Setup Frontend React Project with React Flow",
+            "description": "Initialize the React frontend application with necessary dependencies including React Flow for mind map visualization.",
+            "dependencies": [
+              8
+            ],
+            "details": "1. Navigate to frontend/ directory\n2. Initialize React project using Create React App or Vite\n3. Install core dependencies: react, react-dom, react-router-dom\n4. Install React Flow library for mind map visualization\n5. Install UI component libraries (Material UI or Chakra UI)\n6. Set up basic folder structure (components/, pages/, services/, utils/)\n7. Configure ESLint and Prettier for code formatting\n8. Create a basic App component with routing setup\n9. Add sample React Flow implementation to verify library works",
+            "status": "pending",
+            "testStrategy": "Run the application locally and verify React Flow renders a simple mind map component"
+          },
+          {
+            "id": 10,
+            "title": "Setup Backend FastAPI Project",
+            "description": "Initialize the Python backend with FastAPI framework, project structure, and core dependencies.",
+            "dependencies": [
+              8
+            ],
+            "details": "1. Navigate to backend/ directory\n2. Create a Python virtual environment\n3. Install FastAPI and dependencies: fastapi, uvicorn, pydantic\n4. Install database connectors based on choice (sqlite3 or pymongo)\n5. Set up project structure (app/, models/, routes/, services/, utils/)\n6. Create main.py with basic FastAPI application\n7. Implement CORS middleware for frontend communication\n8. Set up logging configuration\n9. Create a basic health check endpoint\n10. Add requirements.txt file with all dependencies",
+            "status": "pending",
+            "testStrategy": "Run the FastAPI server locally and verify the health check endpoint returns 200 OK"
+          },
+          {
+            "id": 11,
+            "title": "Initialize Database Schema and Models",
+            "description": "Set up the database (SQLite or MongoDB) with initial schema based on the data models specified in the PRD.",
+            "dependencies": [
+              10
+            ],
+            "details": "1. Choose between SQLite (with SQLAlchemy) or MongoDB based on project requirements\n2. For SQLite: Create database models using SQLAlchemy ORM\n3. For MongoDB: Define Pydantic models for document validation\n4. Implement core data models: User, MindMap, Node, Connection\n5. Set up database connection in the backend\n6. Create database initialization script\n7. Implement basic CRUD operations for each model\n8. Add data validation using Pydantic\n9. Create database migration system if using SQLAlchemy",
+            "status": "pending",
+            "testStrategy": "Write and run tests for model creation, validation, and basic CRUD operations"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "title": "Implement Transcript Extractor Service",
+        "description": "Create a service that fetches and parses YouTube transcripts using the YouTube Data API, handling both official and auto-generated transcripts.",
+        "details": "1. Register for YouTube Data API credentials\n2. Implement a service to fetch video metadata (title, creator, duration, etc.)\n3. Implement transcript extraction using youtube-transcript-api or equivalent\n4. Handle cases where official transcripts are not available (fallback to auto-generated)\n5. Implement error handling for invalid URLs, private videos, etc.\n6. Store extracted transcripts in the database\n7. Add rate limiting and caching to avoid API quota issues\n8. Implement transcript cleaning and preprocessing for better analysis\n9. Create API endpoints for transcript extraction service",
+        "testStrategy": "Test with various YouTube videos (with/without official transcripts, different languages, etc.). Verify transcript extraction accuracy and error handling. Measure performance and optimize for speed and reliability.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "done",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Develop Individual Video Analyzer",
+        "description": "Create a service that uses GPT-4o-mini to analyze individual video transcripts and extract themes, subtopics, and creator-specific insights.",
+        "details": "1. Design prompt templates for GPT-4o-mini to extract themes, subtopics, and insights\n2. Implement service to process transcripts through GPT-4o-mini API\n3. Parse and structure the LLM response into defined data models\n4. Store analysis results in the database\n5. Implement error handling and retry logic for API failures\n6. Add caching to avoid redundant API calls\n7. Optimize prompts for accuracy and consistency\n8. Create API endpoints for individual video analysis\n9. Implement batch processing for long transcripts to manage token limits",
+        "testStrategy": "Test with diverse video content to ensure accurate theme extraction. Compare manual analysis with automated results. Verify structured output matches expected data models. Test error handling and recovery mechanisms.",
+        "priority": "high",
+        "dependencies": [
+          1,
+          2
+        ],
+        "status": "in-progress",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Implement Cross-Video Analyzer",
+        "description": "Develop a service that synthesizes analyses from multiple videos to identify shared themes, contrasts, and conceptual overlaps using GPT-4o-mini.",
+        "details": "1. Design prompt templates for cross-video synthesis\n2. Implement service to process multiple video analyses through GPT-4o-mini\n3. Extract shared themes across videos\n4. Identify contrasting opinions or approaches on the same topics\n5. Detect conceptual overlaps between different videos\n6. Structure and store cross-video analysis results\n7. Implement optimization for handling many videos simultaneously\n8. Create API endpoints for cross-video analysis\n9. Add support for incremental analysis when new videos are added",
+        "testStrategy": "Test with sets of related videos to verify accurate identification of shared themes and contrasts. Validate that the system can handle videos with both similar and divergent content. Measure performance with increasing numbers of videos.",
+        "priority": "high",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Create Mind Map Generator Service",
+        "description": "Develop a service that transforms video analyses into structured mind map data that can be visualized in the frontend.",
+        "details": "1. Design data structure for mind maps (nodes, edges, hierarchies)\n2. Implement conversion from analysis data to mind map structure\n3. Create individual video mind maps\n4. Generate synthesized cross-video mind map\n5. Add metadata to nodes (source video, timestamp, etc.)\n6. Implement node positioning algorithms for optimal layout\n7. Add color coding and tagging by source\n8. Create API endpoints for mind map generation\n9. Optimize for performance with large maps",
+        "testStrategy": "Verify mind map structure accurately represents the analysis data. Test with varying numbers of videos and complexity levels. Ensure metadata is correctly attached to nodes. Validate that both individual and cross-video maps are generated correctly.",
+        "priority": "high",
+        "dependencies": [
+          3,
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Develop Frontend UI Framework",
+        "description": "Create the basic frontend application structure with routing, state management, and core components.",
+        "details": "1. Set up React application with TypeScript\n2. Implement routing (React Router)\n3. Set up state management (Context API or Redux)\n4. Create reusable UI components (buttons, inputs, cards, etc.)\n5. Implement responsive layout for desktop and tablet\n6. Set up API service layer for backend communication\n7. Create loading and error states\n8. Implement authentication framework (for future use)\n9. Set up testing framework (Jest, React Testing Library)",
+        "testStrategy": "Test responsive design across different screen sizes. Verify routing works correctly. Test API service layer with mock data. Ensure components render correctly in various states (loading, error, success).",
+        "priority": "medium",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Implement Mind Map Visualization Component",
+        "description": "Create an interactive mind map visualization using React Flow that displays the generated mind maps with all required interactive features.",
+        "details": "1. Set up React Flow with custom node and edge components\n2. Implement hierarchical layout for mind maps\n3. Add color coding and visual tagging by source\n4. Create toggle functionality between individual and cross-video maps\n5. Implement node click handlers to display transcript snippets\n6. Add contrast/comparison thread overlays\n7. Implement zoom, pan, and focus controls\n8. Create filtering by source video\n9. Add highlighting functionality for concepts across videos\n10. Optimize rendering performance for large mind maps",
+        "testStrategy": "Test interactive features (clicking, toggling, filtering). Verify correct rendering of complex mind maps. Test performance with large datasets. Ensure responsive behavior across screen sizes. Validate accessibility features.",
+        "priority": "high",
+        "dependencies": [
+          5,
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Create URL Submission and Processing UI",
+        "description": "Develop the user interface for submitting YouTube URLs and displaying processing status.",
+        "details": "1. Create URL input form with validation\n2. Implement multi-URL input support\n3. Add URL validation (YouTube URL format)\n4. Create processing status indicators\n5. Implement progress tracking for multi-stage processing\n6. Add error handling and user feedback\n7. Create retry mechanisms for failed processing\n8. Implement estimated time remaining\n9. Add support for cancelling processing",
+        "testStrategy": "Test URL validation with various input formats. Verify proper error messages for invalid inputs. Test progress tracking accuracy. Ensure cancellation works correctly. Validate the complete flow from URL submission to processing completion.",
+        "priority": "medium",
+        "dependencies": [
+          2,
+          3,
+          4,
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 9,
+        "title": "Implement Transcript Snippet Display",
+        "description": "Create a component to display transcript snippets when a mind map node is clicked, showing the relevant quotes from the source video.",
+        "details": "1. Design transcript snippet component\n2. Implement fetching of transcript data based on node metadata\n3. Create highlighting for key phrases in transcript\n4. Add timestamp display and linking\n5. Implement scrolling for long snippets\n6. Add source video attribution\n7. Create toggle for showing more/less context\n8. Implement caching for frequently accessed snippets\n9. Add copy-to-clipboard functionality",
+        "testStrategy": "Test snippet display with various transcript lengths. Verify correct highlighting of key phrases. Test timestamp accuracy. Ensure proper attribution to source videos. Validate that the correct transcript sections are displayed for each node.",
+        "priority": "medium",
+        "dependencies": [
+          7
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 10,
+        "title": "Integrate End-to-End Flow and Optimize Performance",
+        "description": "Connect all components into a complete end-to-end flow, from URL submission to interactive mind map display, and optimize for performance and user experience.",
+        "details": "1. Integrate all frontend and backend components\n2. Implement end-to-end flow testing\n3. Optimize API calls and data transfer\n4. Add caching strategies for improved performance\n5. Implement error recovery throughout the flow\n6. Add analytics to track user interactions and system performance\n7. Optimize LLM prompt usage to reduce costs\n8. Implement progressive loading for large mind maps\n9. Add user onboarding and help features\n10. Conduct end-to-end performance testing and optimization",
+        "testStrategy": "Test the complete flow with various video combinations. Measure and optimize load times and API response times. Verify error handling at each step. Conduct user testing to identify UX issues. Test with edge cases (very long videos, many videos, etc.).",
+        "priority": "high",
+        "dependencies": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-07-06T14:05:31.213Z",
+      "updated": "2025-07-19T10:27:38.748Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

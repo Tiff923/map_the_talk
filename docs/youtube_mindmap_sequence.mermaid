@@ -1,0 +1,56 @@
+sequenceDiagram
+    participant User
+    participant WebApp as Web Application
+    participant VideoProcessor as Video Processor
+    participant TranscriptExtractor as Transcript Extractor
+    participant IndividualAnalyser as Individual Video Analyser
+    participant CrossAnalyzer as Cross-Video Analyzer
+    participant LLM as LLM
+    participant MindMapGenerator as Mind Map Generator
+    participant Database as Database
+
+    User->>WebApp: Submit YouTube URLs
+    WebApp->>VideoProcessor: Process video list
+    
+    loop For each video
+        VideoProcessor->>TranscriptExtractor: Extract transcript
+        TranscriptExtractor-->>VideoProcessor: Return transcript
+
+        VideoProcessor->>IndividualAnalyser: Extract themes
+        IndividualAnalyser->>LLM: Execute theme prompt
+        LLM-->>IndividualAnalyser: Return themes
+        IndividualAnalyser-->>VideoProcessor: Return theme data
+
+        VideoProcessor->>IndividualAnalyser: Extract subtopics
+        IndividualAnalyser->>LLM: Execute subtopic prompt
+        LLM-->>IndividualAnalyser: Return subtopics
+        IndividualAnalyser-->>VideoProcessor: Return subtopic data
+
+        VideoProcessor->>IndividualAnalyser: Extract insights
+        IndividualAnalyser->>LLM: Execute insight prompt
+        LLM-->>IndividualAnalyser: Return insights
+        IndividualAnalyser-->>VideoProcessor: Return insights
+
+        VideoProcessor->>Database: Store VideoAnalysis
+    end
+
+    VideoProcessor->>CrossAnalyzer: Generate CrossVideoAnalysis
+    CrossAnalyzer->>LLM: Execute cross-analysis prompt
+    LLM-->>CrossAnalyzer: Return shared themes, contrasts, overlaps
+    CrossAnalyzer->>Database: Store CrossVideoAnalysis
+    CrossAnalyzer-->>VideoProcessor: Return CrossVideoAnalysis
+
+    WebApp->>MindMapGenerator: Generate mind map
+    MindMapGenerator->>Database: Fetch video analysis & cross analysis
+    Database-->>MindMapGenerator: Return data
+    MindMapGenerator-->>WebApp: Return mind map
+
+    WebApp-->>User: Display interactive mind map
+
+    User->>WebApp: Click on map node
+    WebApp->>Database: Fetch transcript snippet
+    Database-->>WebApp: Return snippet
+
+    User->>WebApp: Apply source filter
+    WebApp->>MindMapGenerator: Filter nodes
+    MindMapGenerator-->>WebApp: Return updated mind map

@@ -1,0 +1,23 @@
+---
+# Diagram-Driven Development Rule
+
+- **Always parse, understand, and follow the sequence diagram in [docs/youtube_mindmap_sequence.mermaid](mdc:docs/youtube_mindmap_sequence.mermaid) and the class diagram in [docs/merged_youtube_mindmap_classes_diagram.mermaid](mdc:docs/merged_youtube_mindmap_classes_diagram.mermaid) before any code planning, code changes, or project startup.**
+  - Review both diagrams to guide architectural and implementation decisions.
+  - Use the diagrams to enforce clear separation of concerns between system components.
+
+- **If there are any discrepancies between the diagrams and the code implementation:**
+  - Always check with the user before proceeding.
+  - Once the user approves a change, update the relevant diagram(s) to keep them in sync with the codebase.
+
+- **Never proceed with code changes or planning that contradicts the diagrams without explicit user approval and a plan to update the diagrams.**
+
+- **Rationale:**
+  - This ensures architectural consistency, maintainability, and clear communication across the project.
+
+- **Examples:**
+  - If a new component is added in code, update the class diagram to reflect it after user approval.
+  - If a process flow changes, update the sequence diagram accordingly.
+description:
+globs:
+alwaysApply: true
+---

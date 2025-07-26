@@ -1,0 +1,97 @@
+<context>
+# Overview  
+The application is an AI-powered tool that transforms multiple YouTube videos into consolidated, interactive mind maps. It enables users—especially visual and audio learners—to quickly grasp key concepts, main ideas, and relationships across selected videos. By leveraging GPT-4o-mini, the system provides context-aware extraction and synthesis of ideas, offering both individual and cross-video perspectives for deep, comparative learning.
+
+# Core Features  
+1. **Multi-Layered Mind Map Structure**  
+   - Visualizes high-level themes, subtopics, and creator-specific insights in a hierarchical, interactive map.
+   - Allows users to toggle between individual video mind maps and a synthesized "All Sources" map.
+   - Nodes are color-coded/tagged by source and support drill-down for details.
+
+2. **Contrast/Comparison Threads**  
+   - Overlay lines highlight differing opinions or methods between creators on the same topic.
+   - Users can visually compare approaches, philosophies, or practical advice across sources.
+
+3. **Interactive Transcript Links**  
+   - Clicking a node reveals transcript snippets (quotes) relevant to that concept.
+   - Enables quick review and reinforcement of audio content.
+
+4. **Source Filtering & Highlighting**  
+   - Users can filter nodes by creator or highlight how a concept is discussed across videos.
+   - Supports both focused and holistic exploration.
+
+# User Experience  
+- **Personas:**
+  - Visual learners seeking spatial organization of knowledge.
+  - Audio learners wanting to reinforce concepts from video content.
+  - Researchers and students comparing multiple perspectives.
+- **Key Flows:**
+  - User submits YouTube URLs.
+  - System processes videos, extracts and analyzes transcripts.
+  - Mind maps are generated and displayed interactively.
+  - Users explore, filter, and compare concepts, drilling into transcript details as needed.
+- **UI/UX Considerations:**
+  - Clean, modern interface with intuitive toggles for map layers and filters.
+  - Responsive design for desktop and tablet.
+  - Color and icon cues for source differentiation and contrast overlays.
+</context>
+<PRD>
+# Technical Architecture  
+- **System Components:**
+  - Web Application (frontend, user interaction)
+  - Video Processor (backend, orchestrates extraction and analysis)
+  - Transcript Extractor (fetches and parses YouTube transcripts)
+  - Individual Video Analyser (extracts themes, subtopics, insights per video)
+  - Cross-Video Analyzer (synthesizes shared themes, contrasts, overlaps)
+  - LLM (GPT-4o-mini, for all language understanding tasks)
+  - Mind Map Generator (builds interactive visualizations)
+  - Database (stores analyses, transcripts, metadata)
+- **Data Models:**
+  - Video, Transcript, VideoAnalysis, Theme, Subtopic, CreatorInsight, CrossVideoAnalysis, SharedTheme, Contrast, ConceptOverlap, MindMap, MindMapNode
+- **APIs & Integrations:**
+  - YouTube Data API (for transcript and metadata extraction)
+  - LLM API (for GPT-4o-mini prompts)
+- **Infrastructure:**
+  - Cloud-based backend (Python)
+  - Frontend (React + React Flow for mind map UI)
+  - Persistent storage (PostgreSQL or MongoDB)
+
+# Development Roadmap  
+- **MVP Requirements:**
+  - User submits YouTube URLs via web UI
+  - System extracts transcripts and metadata
+  - Individual video analysis (themes, subtopics, insights)
+  - Cross-video synthesis (shared themes, contrasts, overlaps)
+  - Interactive mind map visualization (toggle between individual/cross-video, node click for transcript)
+  - Basic source filtering and highlighting
+- **Future Enhancements:**
+  - Advanced filtering (by time, sentiment, etc.)
+  - User accounts and saved sessions
+  - Export mind maps (image, PDF, markdown)
+  - Support for non-YouTube sources
+  - Real-time collaboration
+
+# Logical Dependency Chain
+- Foundation: Transcript extraction and storage
+- Next: Individual video analysis (themes, subtopics, insights)
+- Then: Cross-video analysis (shared themes, contrasts, overlaps)
+- Next: Mind map generation and interactive UI
+- Finally: Filtering, overlays, and advanced UX features
+- Prioritize getting a working end-to-end flow (from URL input to mind map display) as soon as possible, then iterate on depth and polish.
+
+# Risks and Mitigations  
+- **Transcript Quality:** Some YouTube videos may lack accurate transcripts. Mitigation: fallback to auto-generated transcripts, allow user upload.
+- **LLM Cost/Latency:** GPT-4o-mini API calls may be slow or expensive. Mitigation: batch requests, cache results, allow user to limit depth.
+- **Visualization Complexity:** Mind map UI may become cluttered with many videos. Mitigation: progressive disclosure, filtering, and zoom controls.
+- **MVP Scope Creep:** Risk of overengineering. Mitigation: focus on core flow (URL → mind map) for MVP, defer advanced features.
+
+# Appendix  
+- **Research:**
+  - Mind map best practices for learning
+  - Comparison of LLM-based vs. rule-based concept extraction
+  - React Flow and alternatives for interactive graph visualization
+- **Technical Specs:**
+  - Use GPT-4o-mini for all NLP tasks
+  - React + React Flow for frontend
+  - Python backend (flexible)
+  - PostgreSQL/MongoDB for persistence 

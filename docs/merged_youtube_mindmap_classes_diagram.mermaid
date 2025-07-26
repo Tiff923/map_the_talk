@@ -1,0 +1,225 @@
+classDiagram
+    class WebApplication {
+        -videoUrls: List~String~
+        -currentSession: Session
+        +submitVideos(urls: List~String~): void
+        +displayMindMap(mindMap: MindMap): void
+        +handleNodeClick(nodeId: String): void
+        +applyFilters(filters: FilterOptions): void
+    }
+
+    class VideoProcessor {
+        -processingQueue: Queue~Video~
+        -individualAnalyser: IndividualVideoAnalyser
+        -crossAnalyzer: CrossVideoAnalyzer
+        +processVideoList(urls: List~String~): List~VideoAnalysis~
+        +processIndividualVideo(video: Video): VideoAnalysis
+        +generateCrossAnalysis(analyses: List~VideoAnalysis~): CrossVideoAnalysis
+        -extractConcepts(transcript: Transcript): ConceptExtraction
+    }
+
+    class TranscriptExtractor {
+        -youtubeAPI: YouTubeAPI
+        +extractTranscript(videoUrl: String): Transcript
+        +getVideoMetadata(videoUrl: String): VideoMetadata
+        -parseTimestamps(rawTranscript: String): List~TimestampedSegment~
+    }
+
+    class IndividualVideoAnalyser {
+        -apiKey: String
+        -endpoint: String
+        +extractThemes(transcript: Transcript): List~Theme~
+        +extractSubtopics(theme: Theme, context: String): List~Subtopic~
+        +extractInsights(transcript: Transcript): List~CreatorInsight~
+    }
+
+    class LLM {
+        +executePrompt(template: PromptTemplate, data: Object): String
+    }
+
+    class CrossVideoAnalyzer {
+        -similarityCalculator: SimilarityCalculator
+        -llm: LLM
+        +analyzeSharedThemes(analyses: List~VideoAnalysis~): List~SharedTheme~
+        +identifyContrasts(analyses: List~VideoAnalysis~): List~Contrast~
+        +findConceptualOverlaps(analyses: List~VideoAnalysis~): List~ConceptOverlap~
+        +performCrossAnalysis(analyses: List~VideoAnalysis~): CrossVideoAnalysis
+    }
+
+    class MindMapGenerator {
+        -layoutEngine: LayoutEngine
+        -reactFlowInstance: ReactFlowInstance
+        +generateMindMap(crossAnalysis: CrossVideoAnalysis): MindMap
+        +createInteractiveNodes(concepts: List~Concept~): List~InteractiveNode~
+        +generateContrastLines(contrasts: List~Contrast~): List~ContrastLine~
+        +applySourceFiltering(mindMap: MindMap, filters: FilterOptions): MindMap
+    }
+
+    class Database {
+        -connection: DatabaseConnection
+        +storeVideoAnalysis(analysis: VideoAnalysis): void
+        +storeCrossAnalysis(crossAnalysis: CrossVideoAnalysis): void
+        +fetchTranscriptSnippet(nodeId: String): TranscriptSnippet
+        +fetchVideoAnalyses(): List~VideoAnalysis~
+    }
+
+    class Video {
+        -id: String
+        -url: String
+        -title: String
+        -duration: Number
+        -metadata: VideoMetadata
+    }
+
+    class Transcript {
+        -videoId: String
+        -segments: List~TimestampedSegment~
+        -language: String
+        -confidence: Number
+        +getFullText(): String
+    }
+
+    class VideoAnalysis {
+        -videoId: String
+        -themes: List~Theme~
+        -subtopics: List~Subtopic~
+        -creatorInsights: List~CreatorInsight~
+        -extractedAt: DateTime
+        +getThemesByCategory(): Map~String, List~Theme~~
+    }
+
+    class Theme {
+        -id: String
+        -name: String
+        -description: String
+        -confidence: Number
+        -videoSource: String
+        -subtopics: List~Subtopic~
+    }
+
+    class Subtopic {
+        -id: String
+        -name: String
+        -explanation: String
+        -parentTheme: String
+        -videoSource: String
+        -insights: List~CreatorInsight~
+    }
+
+    class CreatorInsight {
+        -id: String
+        -content: String
+        -videoId: String
+        -relatedSubtopic: String
+        -insightType: InsightType
+    }
+
+    class CrossVideoAnalysis {
+        -sharedThemes: List~SharedTheme~
+        -contrasts: List~Contrast~
+        -conceptOverlaps: List~ConceptOverlap~
+        -analysisMetadata: AnalysisMetadata
+    }
+
+    class SharedTheme {
+        -id: String
+        -name: String
+        -participatingVideos: List~String~
+        -consensusLevel: Number
+        +getVideoCount(): Number
+    }
+
+    class Contrast {
+        -id: String
+        -subtopicId: String
+        -opposingInsights: List~CreatorInsight~
+        -contrastType: ContrastType
+        +getOpposingViewpoints(): List~CreatorInsight~
+    }
+
+    class ConceptOverlap {
+        -id: String
+        -primaryConcept: String
+        -overlappingConcepts: List~String~
+        -shouldMerge: Boolean
+        -semanticSimilarity: Number
+        +shouldMergeInVisualization(): Boolean
+    }
+
+    class ContrastType {
+        <<enumeration>>
+        METHODOLOGICAL
+        PHILOSOPHICAL
+        PRACTICAL
+    }
+
+    class MindMap {
+        -nodes: List~MindMapNode~
+        -connections: List~Connection~
+        -layers: List~Layer~
+        -interactionHandlers: Map~String, Function~
+        +addNode(node: MindMapNode): void
+        +createConnection(fromNode: String, toNode: String, type: ConnectionType): void
+        +applyFilter(filter: FilterOptions): void
+    }
+
+    class MindMapNode {
+        -id: String
+        -content: String
+        -level: Number
+        -position: Coordinates
+        -color: String
+        -sourceVideo: String
+        -linkedInsights: List~CreatorInsight~
+        +onClick(): void
+        +onHover(): void
+    }
+
+    %% Main application relationships
+    WebApplication --> VideoProcessor : uses
+    WebApplication --> MindMapGenerator : uses
+    WebApplication --> Database : queries
+
+    %% Video processing relationships
+    VideoProcessor --> TranscriptExtractor : uses
+    VideoProcessor --> IndividualVideoAnalyser : uses
+    VideoProcessor --> CrossVideoAnalyzer : uses
+    VideoProcessor --> CrossVideoAnalysis : creates
+
+    %% Analysis relationships
+    IndividualVideoAnalyser --> LLM : uses
+    CrossVideoAnalyzer --> LLM : uses
+
+    %% MindMap Generator
+    MindMapGenerator --> Database : queries
+
+    %% Data transformation relationships
+    TranscriptExtractor --> Video : processes
+    TranscriptExtractor --> Transcript : creates
+    VideoProcessor --> VideoAnalysis : creates
+    CrossVideoAnalyzer --> CrossVideoAnalysis : creates
+    MindMapGenerator --> MindMap : creates
+
+    %% Content structure relationships
+    VideoAnalysis --> Theme : contains
+    VideoAnalysis --> Subtopic : contains
+    VideoAnalysis --> CreatorInsight : contains
+    Theme --> Subtopic : contains
+    Subtopic --> CreatorInsight : contains
+    MindMap --> MindMapNode : contains
+
+    %% Cross-analysis structure relationships
+    CrossVideoAnalysis --> SharedTheme : contains
+    CrossVideoAnalysis --> Contrast : contains
+    CrossVideoAnalysis --> ConceptOverlap : contains
+    Contrast --> CreatorInsight : references_conflicting
+    Contrast --> ContrastType : classified_as
+
+    %% Cross-analysis to original data relationships
+    SharedTheme --> Theme : aggregates_from
+    ConceptOverlap --> Theme : finds_similar_concepts_in
+    ConceptOverlap --> Subtopic : finds_similar_concepts_in
+    
+    %% Mind map generation relationships
+    CrossVideoAnalysis --> MindMap : contributes_to
+    VideoAnalysis --> MindMap : contributes_to
